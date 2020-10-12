@@ -3,6 +3,8 @@
 namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromArray;
+use App\Models\Tree;
+
 
 class DatasExport implements FromArray
 {
@@ -10,11 +12,11 @@ class DatasExport implements FromArray
 
     public function __construct(array $data)
     {
-        $this->invoices = $data;
+        $this->data = $data;
     }
 
     public function array(): array
     {
-        return $this->invoices;
+        return $this->data;
     }
 }
