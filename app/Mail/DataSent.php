@@ -25,7 +25,7 @@ class DataSent extends Mailable
      *
      * @return void
      */
-    public function __construct(DatasExport $data)
+    public function __construct($data)
     {
         $this->data = $data;
     }
@@ -37,14 +37,12 @@ class DataSent extends Mailable
      */
     public function build()
     {
-        return $this->from('example@example.com')
-                    // ->text('view.name')
-                    ->attach(
-                        Excel::download(
-                            new DatasExport($this->data),
-                            'report.xlsx'
-                        )->getFile(),
-                        ['as' => 'report.xlsx']
-                    );
+        return $this
+        ->from('example@example.com')
+        ->text('mail')
+        ->attach(Excel::download(
+            new DatasExport($this->data), 'report.xlsx'
+            )->getFile(), ['as' => 'report.xlsx']
+        );
     }
 }
