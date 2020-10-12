@@ -70,9 +70,15 @@
               </div>
             </div>
 
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+            <button class="mb-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
               Send
             </button>
+
+            @if(session()->has('success'))
+              <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+                <p class="font-bold">{{ session()->get('success') }}</p>
+              </div>
+            @endif
 
           </form>
         </div>
