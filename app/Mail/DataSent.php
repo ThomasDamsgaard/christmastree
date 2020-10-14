@@ -38,7 +38,7 @@ class DataSent extends Mailable
     public function build()
     {
         return $this
-        ->from('example@example.com')
+        ->from('thdam09@gmail.com')
         ->text('mail')
         ->attach(Excel::download(
             new DatasExport($this->data), 'report.xlsx'
