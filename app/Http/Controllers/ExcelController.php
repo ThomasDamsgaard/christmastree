@@ -35,7 +35,7 @@ class ExcelController extends Controller
 
 
 
-        Mail::to('t@d.dk')->send(new DataSent($export));
+        Mail::to('thomas.damsgaard@hotmail.com')->send(new DataSent($export));
 
         return redirect('/')->with('success', 'The order is sent');
     }
