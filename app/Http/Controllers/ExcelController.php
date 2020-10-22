@@ -13,10 +13,19 @@ class ExcelController extends Controller
 {
     public function store(Request $request)
     {
+
+      // dd($request->all());
+
         $data = $request->all();
 
         $export = [
+          ['Date', $data['date']],
+          ['Trækker reg. #', $data['puller']],
+          ['Trailer reg. #', $data['trailer']],
+          ['Supplier', $data['supplier']],
+          ['Reference Person', $data['reference']],
           ['Order number', $data['order']],
+          ['Location', $data['location']],
           ['Type', $data['type']],
           ['Size', $data['size']],
           ['Amount', $data['amount']],

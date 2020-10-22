@@ -42,7 +42,7 @@ class DataSent extends Mailable
         ->text('mail')
         ->attach(Excel::download(
             new DatasExport($this->data), 'report.xlsx'
-            )->getFile(), ['as' => 'report.xlsx']
+            )->getFile(), ['as' => '' . $this->data[5][1]]
         );
     }
 }
