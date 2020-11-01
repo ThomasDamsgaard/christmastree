@@ -97,14 +97,14 @@
 
                         <div class="grid grid-cols-6 gap-6 mt-5">
                           <div class="col-span-6 sm:col-span-3">
-                            <label for="second-trailer" class="block text-sm font-medium leading-5 text-gray-700">
+                            <label for="second_trailer" class="block text-sm font-medium leading-5 text-gray-700">
                               2nd. Trailer Reg
                             </label>
                             <div class="mt-1 flex rounded-md shadow-sm">
                               <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                 #
                               </span>
-                              <input id="second-trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="TH4675" name="second-trailer">
+                              <input id="second_trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="TH4675" name="second_trailer">
                             </div>
                           </div>
 
