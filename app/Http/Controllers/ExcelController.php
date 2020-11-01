@@ -14,33 +14,41 @@ class ExcelController extends Controller
     public function store(Request $request)
     {
 
-      // dd($request->all());
+      dd($request->all());
 
         $data = $request->all();
 
-        $export = [
-          ['Date', $data['date']],
-          ['Trækker reg. #', $data['puller']],
-          ['Trailer reg. #', $data['trailer']],
-          ['Supplier', $data['supplier']],
-          ['Reference Person', $data['reference']],
-          ['Order number', $data['order']],
-          ['Location', $data['location']],
-          ['Type', $data['type']],
-          ['Size', $data['size']],
-          ['Amount', $data['amount']],
-          ['Label', $data['label']],
-        ];
+        // $export = [
+        //   ['Date', $data['date']],
+        //   ['Trækker reg. #', $data['puller']],
+        //   ['Trailer reg. #', $data['trailer']],
+        //   ['Supplier', $data['supplier']],
+        //   ['Reference Person', $data['reference']],
+        //   ['Order number', $data['order']],
+        //   ['Location', $data['location']],
+        //   ['Type', $data['type']],
+        //   ['Size', $data['size']],
+        //   ['Amount', $data['amount']],
+        //   ['Label', $data['label']],
+        // ];
 
-        // $data = new Tree;
-        //
-        // $data->order = $request->order;
-        // $data->type = $request->type;
-        // $data->size = $request->size;
-        // $data->amount = $request->amount;
-        // $data->label = $request->label;
-        //
-        // $data->save();
+        $data = new Tree;
+
+        $data->order = $request->order;
+        $data->puller = $request->puller;
+        $data->trailer = $request->trailer;
+        $data->second_trailer = $request->second_trailer;
+        $data->supplier = $request->supplier;
+        $data->reference = $request->reference;
+        $data->phone = $request->phone;
+        $data->location = $request->location;
+        $data->pallet = $request->pallet;
+        $data->type = $request->type;
+        $data->size = $request->size;
+        $data->amount = $request->amount;
+        $data->label = $request->label;
+
+        $data->save();
 
 
 
