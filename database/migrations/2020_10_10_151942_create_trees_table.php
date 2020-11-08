@@ -15,11 +15,20 @@ class CreateTreesTable extends Migration
     {
         Schema::create('trees', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('date');
             $table->string('order')->unique();
-            $table->string('type');
-            $table->string('size');
-            $table->string('amount');
-            $table->string('label');
+            $table->string('puller');
+            $table->string('trailer');
+            $table->string('second_trailer');
+            $table->string('supplier');
+            $table->string('reference');
+            $table->string('phone');
+            $table->string('location');
+            $table->json('pallet');
+            $table->json('type');
+            $table->json('size');
+            $table->json('amount');
+            $table->json('label');
             $table->timestamps();
         });
     }
