@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Exports\DatasExport;
+use App\Exports\TreesExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DataSent extends Mailable
@@ -41,8 +42,8 @@ class DataSent extends Mailable
         ->from('thdam09@gmail.com')
         ->text('mail')
         ->attach(Excel::download(
-            new DatasExport($this->data), 'report.xlsx'
-            )->getFile(), ['as' => '' . $this->data[5][1]]
+            new TreesExport(), 'report.xlsx'
+            )->getFile(), ['as' => 'report.xlsx']
         );
     }
 }
