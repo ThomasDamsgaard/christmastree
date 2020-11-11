@@ -14,7 +14,7 @@ class TreesExport implements FromView
     public function view(): View
     {
         return view('exports.table', [
-            'trees' => Tree::latest('created_at')->first()
+            'tree' => Tree::latest('created_at')->first()
         ]);
     }
 }
