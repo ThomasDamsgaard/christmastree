@@ -321,18 +321,18 @@
                 <div class="md:grid md:grid-cols-3 md:gap-6">
                   <div class="md:col-span-1">
                     <div class="px-4 sm:px-0">
-                      <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
+                      <h3 class="text-lg font-medium leading-6 text-gray-900">Line Information</h3>
                       <p class="mt-1 text-sm leading-5 text-gray-600">
-                        Use a permanent address where you can receive mail.
+                        Some info text
                       </p>
                     </div>
 
                     <button @click="remove(k)" v-show="k || ( !k && inputs.length > 1)" class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-red-600 shadow-sm hover:bg-red-500 focus:outline-none focus:shadow-outline-blue active:bg-red-600 transition duration-150 ease-in-out" type="button">
-                      Delete Row
+                      Delete Line
                     </button>
 
                     <button @click="add(k)" v-show="k == inputs.length-1" class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-green-600 shadow-sm hover:bg-green-500 focus:outline-none focus:shadow-outline-blue active:bg-green-600 transition duration-150 ease-in-out" type="button">
-                      Add Row
+                      Add Line
                     </button>
 
                   </div>
@@ -357,7 +357,7 @@
                               Size
                             </label>
                             <div class="mt-1 flex rounded-md shadow-sm">
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" list="size" placeholder="xxx" name="size[]">
+                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" list="size" placeholder="xxx" name="type[]">
                               <datalist id="size">
                                 <option value="125-150">125-150</option>
                                 <option value="150-175">150-175</option>
@@ -370,7 +370,7 @@
                             <label for="amount" class="block text-sm font-medium leading-5 text-gray-700">
                               Amount
                             </label>
-                            <input class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12" name="amount[]">
+                            <input class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12" name="type[]">
                           </div>
 
                           <div class="col-span-6 sm:col-span-3">
@@ -378,7 +378,7 @@
                               Label
                             </label>
                             <div class="mt-1 flex rounded-md shadow-sm">
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" list="label" placeholder="xxx" name="label[]">
+                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" list="label" placeholder="xxx" name="type[]">
                               <datalist id="label">
                                 <option value="Green/White">Green/White</option>
                                 <option value="Blue/White">Blue/White</option>
@@ -391,6 +391,7 @@
                       </div>
                     </div>
                   </div>
+
 
                 </div>
               </div>
@@ -549,10 +550,16 @@
             </div> --}}
 
 
-            <button type="submit" class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-500 focus:outline-none focus:shadow-outline-blue active:bg-indigo-600 transition duration-150 ease-in-out">
-              Send
-            </button>
 
+            <div class="mt-5 md:mt-0 md:col-span-3">
+              <div class="shadow overflow-hidden sm:rounded-md">
+                <div class="px-4 py-5 bg-white sm:p-6">
+                  <button type="submit" class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-500 focus:outline-none focus:shadow-outline-blue active:bg-indigo-600 transition duration-150 ease-in-out">
+                    Send
+                  </button>
+                </div>
+              </div>
+            </div>
 
             @if(session()->has('success'))
               <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
