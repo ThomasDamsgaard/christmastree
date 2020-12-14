@@ -27,36 +27,37 @@
 
     </head>
     <body class="antialiased bg-gray-100">
-
-
-
-        {{-- <div class="px-10 flex justify-center mt-6"> --}}
-          <form class="" method="POST" action="{{ route('excel.store') }}">
+          <form class="mt-5" method="POST" action="{{ route('excel.store') }}">
             @csrf
 
             <div>
-              <div class="md:grid md:grid-cols-3 md:gap-6 mt-10 px-10">
-                <div class="md:col-span-1">
+              @include('components.section-text', [
+                'header' => 'Header',
+                'text' => 'This information will tell employee what the section is about.'
+                ])
+
+              <div class="md:grid md:grid-cols-3 md:gap-6 mt-5 px-10">
+                {{-- <div class="md:col-span-1">
                   <div class="px-4 sm:px-0">
                     <h3 class="text-lg font-medium leading-6 text-gray-900">Header</h3>
                     <p class="mt-1 text-sm leading-5 text-gray-600">
                       This information will tell employee what the section is about.
                     </p>
                   </div>
-                </div>
-                <div class="mt-5 md:mt-0 md:col-span-2">
+                </div> --}}
+                <div class="mt-5 md:mt-0 md:col-span-3">
                     <div class="shadow sm:rounded-md sm:overflow-hidden">
                       <div class="px-4 py-5 bg-white sm:p-6">
 
                         <div class="grid grid-cols-6 gap-6">
-                          <div class="col-span-6 sm:col-span-3">
+                          <div class="col-span-6 sm:col-span-2">
                             <label for="date" class="block text-sm font-medium leading-5 text-gray-700">
                               Date
                             </label>
                             <input id="date" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" value="{{ Carbon\Carbon::now()->format('d-m-y') }}" name="date">
                           </div>
 
-                          <div class="col-span-6 sm:col-span-3">
+                          <div class="col-span-6 sm:col-span-2">
                             <label for="order" class="block text-sm font-medium leading-5 text-gray-700">
                               Order
                             </label>
@@ -67,10 +68,17 @@
                               <input id="order" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="1234567" name="order">
                             </div>
                           </div>
+
+                          <div class="col-span-6 sm:col-span-2">
+                            <label for="location" class="block text-sm font-medium leading-5 text-gray-700">
+                              Location
+                            </label>
+                            <input id="location" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="Godset" name="location">
+                          </div>
                         </div>
 
                         <div class="grid grid-cols-6 gap-6 mt-5">
-                          <div class="col-span-6 sm:col-span-3">
+                          <div class="col-span-6 sm:col-span-2">
                             <label for="puller" class="block text-sm font-medium leading-5 text-gray-700">
                               Tractor/Puller Reg
                             </label>
@@ -82,7 +90,7 @@
                             </div>
                           </div>
 
-                          <div class="col-span-6 sm:col-span-3">
+                          <div class="col-span-6 sm:col-span-2">
                             <label for="trailer" class="block text-sm font-medium leading-5 text-gray-700">
                               Trailer Reg
                             </label>
@@ -93,10 +101,8 @@
                               <input id="trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="1234567" name="trailer">
                             </div>
                           </div>
-                        </div>
 
-                        <div class="grid grid-cols-6 gap-6 mt-5">
-                          <div class="col-span-6 sm:col-span-3">
+                          <div class="col-span-6 sm:col-span-2">
                             <label for="second_trailer" class="block text-sm font-medium leading-5 text-gray-700">
                               2nd. Trailer Reg
                             </label>
@@ -107,24 +113,24 @@
                               <input id="second_trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="TH4675" name="second_trailer">
                             </div>
                           </div>
+                        </div>
 
-                          <div class="col-span-6 sm:col-span-3">
+                        <div class="grid grid-cols-6 gap-6 mt-5">
+                          <div class="col-span-6 sm:col-span-2">
                             <label for="supplier" class="block text-sm font-medium leading-5 text-gray-700">
                               Supplier
                             </label>
                             <input id="supplier" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="Godset" name="supplier">
                           </div>
-                        </div>
 
-                        <div class="grid grid-cols-6 gap-6 mt-5">
-                          <div class="col-span-6 sm:col-span-3">
+                          <div class="col-span-6 sm:col-span-2">
                             <label for="reference" class="block text-sm font-medium leading-5 text-gray-700">
                               Reference Person
                             </label>
                             <input id="reference" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="Jens Jensen" name="reference">
                           </div>
 
-                          <div class="col-span-6 sm:col-span-3">
+                          <div class="col-span-6 sm:col-span-2">
                             <label for="phone" class="block text-sm font-medium leading-5 text-gray-700">
                               Phone
                             </label>
@@ -138,186 +144,57 @@
                         </div>
 
                         <div class="grid grid-cols-6 gap-6 mt-5">
-                          <div class="col-span-6 sm:col-span-3">
-                            <label for="location" class="block text-sm font-medium leading-5 text-gray-700">
-                              Location
-                            </label>
-                            <input id="location" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="Godset" name="location">
-                          </div>
-                        </div>
-
-                        <div class="grid grid-cols-6 gap-6 mt-5">
                           <div class="col-span-6 sm:col-span-2">
-                            <label for="pallet" class="block text-sm font-medium leading-5 text-gray-700">
-                              Pallets
-                            </label>
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #1
-                              </span>
-                              <input id="pallet" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 md:mt-6 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #2
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 md:mt-6 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #3
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="grid grid-cols-6 gap-6 mt-5">
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #4
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #5
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #6
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #7
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #8
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #9
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="grid grid-cols-6 gap-6 mt-5">
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #10
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #11
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #12
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="grid grid-cols-6 gap-6 mt-5">
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #13
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #14
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #15
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="grid grid-cols-6 gap-6 mt-5">
-                          <div class="col-span-6 sm:col-span-2">
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                #16
-                              </span>
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
-                            </div>
-                          </div>
-                        </div>
+                                <label for="pallet" class="block text-sm font-medium leading-5 text-gray-700">
+                                  Pallets
+                                </label>
+                                <div class="mt-1 flex rounded-md shadow-sm">
+                                  <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                                    #1
+                                  </span>
+                                  <input id="pallet-1" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
+                                </div>
+                              </div>
+                          @for ($i = 2; $i < 4; $i++)
+                              <div class="col-span-6 sm:col-span-2 mt-5">
+                                <div class="mt-1 flex rounded-md shadow-sm">
+                                  <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                                    #{{ $i }}
+                                  </span>
+                                  <input id="pallet-{{ $i }}" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12345" name="pallet[]">
+                                </div>
+                              </div>
+                          @endfor
                       </div>
+
                     </div>
                 </div>
               </div>
             </div>
 
-            <div id="app">
+             @include('rule')
 
+             @include('components.section-text', [
+                  'header' => 'Line Specifications',
+                  'text' => 'This information will tell employee what the section is about.'
+                  ])
 
-              <div class="hidden sm:block">
-                <div class="py-5">
-                  <div class="border-t border-gray-200"></div>
+              <div class="mt-10 sm:mt-0 px-10 mb-5">
+                <div class="md:grid md:grid-cols-3 md:gap-6">
+                  <div class="mt-5 md:mt-0 md:col-span-3">
+                    @include('table')
+                  </div>
                 </div>
               </div>
 
-              <div v-for="(input,k) in inputs" :key="k" class="mt-10 sm:mt-0 px-10 mb-5">
+              @include('modal')
+
+           
+
+            <div id="app">
+              @include('rule')
+
+              <div v-for="(input,k) in inputs" :key="k" class="mt-5 px-10 mb-5">
                 <div class="md:grid md:grid-cols-3 md:gap-6">
                   <div class="md:col-span-1">
                     <div class="px-4 sm:px-0">
@@ -386,170 +263,17 @@
                               </datalist>
                             </div>
                           </div>
-
                         </div>
                       </div>
                     </div>
                   </div>
 
-
                 </div>
               </div>
-
             </div>
 
-            {{-- <div class="mt-10 sm:mt-0 px-10 mb-10">
-              <div class="md:grid md:grid-cols-3 md:gap-6">
-                <div class="md:col-span-1">
-                  <div class="px-4 sm:px-0">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
-                    <p class="mt-1 text-sm leading-5 text-gray-600">
-                      Use a permanent address where you can receive mail.
-                    </p>
-                  </div>
-
-                  <div class="px-4 py-3 mt-5 bg-gray-50 text-right sm:px-6">
-                    <button type="submit" class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-500 focus:outline-none focus:shadow-outline-blue active:bg-indigo-600 transition duration-150 ease-in-out">
-                      Send
-                    </button>
-
-                    <button @click="remove(k)" v-show="k || ( !k && inputs.length > 1)" class="mb-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                      Delete Row
-                    </button>
-
-                    <button @click="add(k)" v-show="k == inputs.length-1" class="mb-6 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                      Add Row
-                    </button>
-                  </div>
-
-                </div>
-
-                <div class="md:col-span-2">
-
-                    <div class="shadow overflow-hidden sm:rounded-md">
-                      <div v-for="(input,k) in inputs" :key="k" class="px-4 py-5 bg-white sm:p-6">
-
-                        <div class="grid grid-cols-6 gap-6">
-                          <div class="col-span-6 sm:col-span-3">
-                            <label for="type" class="block text-sm font-medium leading-5 text-gray-700">
-                              Type
-                            </label>
-                            <input v-model="input.type" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" list="type" placeholder="xxx" name="type">
-                            <datalist id="type">
-                              <option value="NGR">NGR</option>
-                              <option value="NOB">NOB</option>
-                            </datalist>
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-3">
-                            <label for="size" class="block text-sm font-medium leading-5 text-gray-700">
-                              Size
-                            </label>
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" list="size" placeholder="xxx" name="size">
-                              <datalist id="size">
-                                <option value="125-150">125-150</option>
-                                <option value="150-175">150-175</option>
-                                <option value="150-200">150-200</option>
-                              </datalist>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="grid grid-cols-6 gap-6 mt-5">
-                          <div class="col-span-6 sm:col-span-3">
-                            <label for="amount" class="block text-sm font-medium leading-5 text-gray-700">
-                              Amount
-                            </label>
-                            <input class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="12" name="amount">
-                          </div>
-
-                          <div class="col-span-6 sm:col-span-3">
-                            <label for="label" class="block text-sm font-medium leading-5 text-gray-700">
-                              Label
-                            </label>
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                              <input class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" list="label" placeholder="xxx" name="label">
-                              <datalist id="label">
-                                <option value="Green/White">Green/White</option>
-                                <option value="Blue/White">Blue/White</option>
-                                <option value="Grey">Grey</option>
-                              </datalist>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-              </div> --}}
-
-              {{-- <div id="app">
-                <div class="form-group" v-for="(input,k) in inputs" :key="k">
-                  <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="">
-                        Type
-                      </label>
-                      <input v-model="input.type" class="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" list="type" placeholder="xxx" name="type">
-                      <datalist id="type">
-                        <option value="NGR">NGR</option>
-                        <option value="NOB">NOB</option>
-                      </datalist>
-                    </div>
-
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="">
-                        Size
-                      </label>
-                      <input class="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" list="size" placeholder="xxx" name="size">
-                      <datalist id="size">
-                        <option value="125-150">125-150</option>
-                        <option value="150-175">150-175</option>
-                        <option value="150-200">150-200</option>
-                      </datalist>
-                    </div>
-                  </div>
-
-                  <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full md:w-1/2 px-3">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="">
-                        Amount
-                      </label>
-                      <input class="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="300" name="amount">
-                    </div>
-
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-text">
-                        Label
-                      </label>
-                      <input class="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" list="label" placeholder="xxx" name="label">
-                      <datalist id="label">
-                        <option value="Green/White">Green/White</option>
-                        <option value="Blue/White">Blue/White</option>
-                        <option value="Grey">Grey</option>
-                      </datalist>
-                    </div>
-                  </div>
-
-                  <button @click="remove(k)" v-show="k || ( !k && inputs.length > 1)" class="mb-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                    Delete Row
-                  </button>
-
-                  <span>
-                      <p class="fas fa-plus-circle" @click="add(k)" v-show="k == inputs.length-1">+</p>
-                  </span>
-              </div>
-              </div>
-
-
-
-              <button class="mb-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                Send
-              </button>
-
-              </div>
-            </div> --}}
-
-
+            <div>
+             
 
             <div class="mt-5 md:mt-0 md:col-span-3">
               <div class="shadow overflow-hidden sm:rounded-md">
@@ -560,6 +284,7 @@
                 </div>
               </div>
             </div>
+            </div>
 
             @if(session()->has('success'))
               <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
@@ -568,7 +293,17 @@
             @endif
 
           </form>
-        {{-- </div> --}}
+          <script type="text/javascript">
+            let inputs = document.getElementsByName('pallet[]');
+            console.log(inputs);
+            inputs.forEach(function(input) {
+              input.addEventListener('change', function(e) {
+                let modal = document.getElementById('modal');
+                modal.classList.remove('hidden');
+              });
+            });
+          </script>
+    
         <script type="text/javascript">
           var app = new Vue({
             el: "#app",
