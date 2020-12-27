@@ -24,6 +24,7 @@ class CreateTreesTable extends Migration
             $table->string('reference');
             $table->string('phone');
             $table->string('location');
+            $table->json('slot');
             $table->json('pallet');
             $table->json('type');
             $table->json('size');

@@ -49,6 +49,7 @@ class ExcelController extends Controller
         $data->reference = $request->reference;
         $data->phone = $request->phone;
         $data->location = $request->location;
+        $data->slot = json_encode($request->slot);
         $data->pallet = json_encode($request->pallet);
         $data->type = json_encode($request->type);
         $data->size = json_encode($request->size);

@@ -71,16 +71,6 @@
             @endif
 
           </form>
-         {{--  <script type="text/javascript">
-            let inputs = document.getElementsByName('pallet[]');
-            console.log(inputs);
-            inputs.forEach(function(input) {
-              input.addEventListener('change', function(e) {
-                let modal = document.getElementById('modal');
-                modal.classList.remove('hidden');
-              });
-            });
-          </script> --}}
     
         <script type="text/javascript">
           var app = new Vue({
@@ -88,16 +78,23 @@
             data: {
                 inputs: [
                     {
-                        type: ''
+                        slot: '',
+                        pallet: '',
+                        type: '',
+                        label: '',
+                        size: '',
+                        amount: ''
                     }
                 ]
             },
             methods: {
-                add(index) {
-                    this.inputs.push({ type: '' });
+                add() {
+                    this.inputs.push({ slot: '', pallet: '', type: '', label: '', size: '', amount: '' });
                 },
                 remove(index) {
+                  if (confirm('Confirm you want to delete the row')) {
                     this.inputs.splice(index, 1);
+                  }
                 }
             }
           });
