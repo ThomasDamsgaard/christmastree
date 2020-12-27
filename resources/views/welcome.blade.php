@@ -36,9 +36,9 @@
                 'text' => 'This information will tell employee what the section is about.'
                 ])
 
-              @include('components.pallets')
+              @include('components.customer-data')
 
-             @include('rule')
+             @include('components.rule')
 
              @include('components.section-text', [
               'header' => 'Line Specifications',
@@ -46,9 +46,7 @@
               ])
 
               
-              @include('table')
-
-              {{-- @include('modal') --}}
+              @include('components.table')
 
             <div>
              
