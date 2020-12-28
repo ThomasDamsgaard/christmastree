@@ -8,7 +8,7 @@
               <label for="date" class="block text-sm font-medium leading-5 text-gray-700">
                 Date
               </label>
-              <input id="date" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" value="{{ Carbon\Carbon::now()->format('y-m-d') }}" name="date">
+              <input id="date" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" value="{{ Carbon\Carbon::now()->format('y-m-d') }}" name="date" required>
             </div>
 
             <div class="col-span-6 sm:col-span-2">
@@ -19,7 +19,7 @@
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   #
                 </span>
-                <input id="order" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="1234567" name="order">
+                <input id="order" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="1234567" name="order" required>
               </div>
             </div>
 
@@ -27,7 +27,7 @@
               <label for="location" class="block text-sm font-medium leading-5 text-gray-700">
                 Location
               </label>
-              <input id="location" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="Godset" name="location">
+              <input id="location" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="Godset" name="location" required>
             </div>
             </div>
 
@@ -40,7 +40,7 @@
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   #
                 </span>
-                <input id="puller" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="TH4675" name="puller">
+                <input id="puller" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="TH4675" name="puller" required>
               </div>
             </div>
 
@@ -52,7 +52,7 @@
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   #
                 </span>
-                <input id="trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="1234567" name="trailer">
+                <input id="trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="1234567" name="trailer" required>
               </div>
             </div>
 
@@ -64,7 +64,7 @@
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   #
                 </span>
-                <input id="second_trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="TH4675" name="second_trailer">
+                <input id="second_trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="TH4675" name="second_trailer" required>
               </div>
             </div>
             </div>
@@ -74,14 +74,14 @@
               <label for="supplier" class="block text-sm font-medium leading-5 text-gray-700">
                 Supplier
               </label>
-              <input id="supplier" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="Godset" name="supplier">
+              <input id="supplier" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="Godset" name="supplier" required>
             </div>
 
             <div class="col-span-6 sm:col-span-2">
               <label for="reference" class="block text-sm font-medium leading-5 text-gray-700">
                 Reference Person
               </label>
-              <input id="reference" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="Jens Jensen" name="reference">
+              <input id="reference" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="Jens Jensen" name="reference" required>
             </div>
 
             <div class="col-span-6 sm:col-span-2">
@@ -92,7 +92,7 @@
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   #
                 </span>
-                <input id="phone" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="number" placeholder="80808080" name="phone">
+                <input id="phone" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="number" placeholder="80808080" name="phone" required>
               </div>
             </div>
             </div>
