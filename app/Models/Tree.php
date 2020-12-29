@@ -22,6 +22,7 @@ class Tree extends Model
      * @var array
      */
     protected $casts = [
+        'slot' => 'array',
         'pallet' => 'array',
         'type' => 'array',
         'size' => 'array',
