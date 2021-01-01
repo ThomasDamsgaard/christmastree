@@ -13,6 +13,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelController extends Controller
 {
+    /**
+     * Store a new delivery in the database.
+     *
+     * @param  \App\Http\Requests\StorePostRequest  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(StoreOrderRequest $request)
     {
 
