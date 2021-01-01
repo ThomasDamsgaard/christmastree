@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/', [App\Http\Controllers\ExcelController::class, 'store'])->name('excel.store');
+Route::post('/', [App\Http\Controllers\DeliveryNoteController::class, 'store'])->name('deliveryNote.store');
 
 Auth::routes();
 

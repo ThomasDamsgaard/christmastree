@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ExcelController extends Controller
+class DeliveryNoteController extends Controller
 {
     /**
      * Store a new delivery in the database.

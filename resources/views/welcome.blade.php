@@ -27,7 +27,7 @@
 
     </head>
     <body class="antialiased bg-gray-100">
-          <form class="mt-5" method="POST" action="{{ route('excel.store') }}">
+          <form class="mt-5" method="POST" action="{{ route('deliveryNote.store') }}">
             @csrf
 
             <div>
