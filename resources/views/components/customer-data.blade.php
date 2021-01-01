@@ -14,6 +14,9 @@
               value="{{ Carbon\Carbon::now()->format('d-m-Y') }}" 
               name="date" pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" 
               required>
+              @error('date')
+                <p class="text-red-900">{{ $message }}</p>
+              @enderror
             </div>
 
             <div class="col-span-6 sm:col-span-2">
@@ -57,7 +60,7 @@
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   #
                 </span>
-                <input id="trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="1234567" name="trailer" required>
+                <input id="trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="1234567" name="trailer">
               </div>
             </div>
 
@@ -69,7 +72,7 @@
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   #
                 </span>
-                <input id="second_trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="TH4675" name="second_trailer" required>
+                <input id="second_trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="TH4675" name="second_trailer">
               </div>
             </div>
             </div>
