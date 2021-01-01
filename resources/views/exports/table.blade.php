@@ -3,46 +3,46 @@
       <tbody>
         <tr>
           <td>Order #</td>
-          <td>{{ $tree->order }}</td>
+          <td>{{ $delivery_note->order }}</td>
         </tr>
 
         <tr>
           <td>Puller Reg #</td>
-          <td>{{ $tree->puller }}</td>
+          <td>{{ $delivery_note->puller }}</td>
         </tr>
 
         <tr>
           <td>Trailer Reg #</td>
-          <td>{{ $tree->trailer }}</td>
+          <td>{{ $delivery_note->trailer }}</td>
         </tr>
 
         <tr>
           <td>Second Trailer Reg #</td>
-          <td>{{ $tree->second_trailer }}</td>
+          <td>{{ $delivery_note->second_trailer }}</td>
         </tr>
 
         <tr>
           <td>Supplier</td>
-          <td>{{ $tree->supplier }}</td>
+          <td>{{ $delivery_note->supplier }}</td>
         </tr>
 
         <tr>
           <td>Reference</td>
-          <td>{{ $tree->reference }}</td>
+          <td>{{ $delivery_note->reference }}</td>
         </tr>
 
         <tr>
           <td>Phone</td>
-          <td>{{ $tree->phone }}</td>
+          <td>{{ $delivery_note->phone }}</td>
         </tr>
 
         <tr>
           <td>Location</td>
-          <td>{{ $tree->location }}</td>
+          <td>{{ $delivery_note->location }}</td>
         </tr>
         <tr>
           <td>Pallet #</td>
-          @foreach (json_decode($tree['pallet']) as $pallet)
+          @foreach (json_decode($delivery_note['pallet']) as $pallet)
             <td>{{ $pallet }}</td>
           @endforeach
         </tr>
@@ -60,7 +60,7 @@
           <tr>
             <td></td>
           </tr>
-            @foreach (json_decode($tree->type) as $typ)
+            @foreach (json_decode($delivery_note->type) as $typ)
               @if ($loop->iteration % 4 == 0)
                 <tr>
               @endif

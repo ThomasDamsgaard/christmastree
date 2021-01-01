@@ -6,7 +6,7 @@ use App\Exports\DatasExport;
 use App\Exports\TreesExport;
 use App\Http\Requests\StoreDeliveryNoteRequest;
 use App\Mail\DataSent;
-use App\Models\Tree;
+use App\Models\DeliveryNote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
@@ -42,9 +42,9 @@ class ExcelController extends Controller
         //
         // dd($export);
 
-        // dd(Tree::first()->type);
+        // dd(DeliveryNote::first()->type);
 
-        $data = new Tree;
+        $data = new DeliveryNote;
 
         $data->date = $request->date;
         $data->order = $request->order;
