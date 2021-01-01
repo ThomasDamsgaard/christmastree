@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DatasExport;
+use App\Exports\TreesExport;
+use App\Http\Requests\StoreOrderRequest;
+use App\Mail\DataSent;
+use App\Models\Tree;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Models\Tree;
-use App\Exports\DatasExport;
-use App\Exports\TreesExport;
-use App\Mail\DataSent;
 
 class ExcelController extends Controller
 {
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
 
       // dd($request->all());
@@ -36,7 +37,6 @@ class ExcelController extends Controller
         // dd($export);
 
         // dd(Tree::first()->type);
-
 
         $data = new Tree;
 
