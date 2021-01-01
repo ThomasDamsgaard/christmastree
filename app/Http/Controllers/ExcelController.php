@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\DatasExport;
 use App\Exports\TreesExport;
-use App\Http\Requests\StoreOrderRequest;
+use App\Http\Requests\StoreDeliveryNoteRequest;
 use App\Mail\DataSent;
 use App\Models\Tree;
 use Illuminate\Http\Request;
@@ -16,10 +16,10 @@ class ExcelController extends Controller
     /**
      * Store a new delivery in the database.
      *
-     * @param  \App\Http\Requests\StorePostRequest  $request
+     * @param  \App\Http\Requests\StoreDeliveryNoteRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreOrderRequest $request)
+    public function store(StoreDeliveryNoteRequest $request)
     {
 
       // dd($request->all());
