@@ -8,7 +8,12 @@
               <label for="date" class="block text-sm font-medium leading-5 text-gray-700">
                 Date
               </label>
-              <input id="date" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" value="{{ Carbon\Carbon::now()->format('y-m-d') }}" name="date" required>
+              <input id="date" 
+              class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" 
+              type="text" 
+              value="{{ Carbon\Carbon::now()->format('d-m-Y') }}" 
+              name="date" pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" 
+              required>
             </div>
 
             <div class="col-span-6 sm:col-span-2">
