@@ -6,7 +6,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Exports\DatasExport;
 use App\Exports\TreesExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -17,7 +16,7 @@ class DataSent extends Mailable
     /**
      * The order instance.
      *
-     * @var DatasExport
+     * @var TreesExport
      */
     public $data;
 
