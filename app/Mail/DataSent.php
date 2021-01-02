@@ -2,11 +2,12 @@
 
 namespace App\Mail;
 
+use App\Exports\CsvsExport;
+use App\Exports\TreesExport;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Exports\TreesExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DataSent extends Mailable
@@ -41,8 +42,12 @@ class DataSent extends Mailable
         ->from('thdam09@gmail.com')
         ->text('mail')
         ->attach(Excel::download(
-            new TreesExport(), 'report.xlsx'
+                new TreesExport(), 'report.xlsx'
             )->getFile(), ['as' => 'report.xlsx']
         );
+        // ->attach(Excel::download(
+        //         new CsvsExport(), 'report.csv'
+        //     )->getFile(), ['as' => 'report.csv']
+        // );
     }
 }
