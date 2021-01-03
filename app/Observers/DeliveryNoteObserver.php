@@ -16,7 +16,7 @@ class DeliveryNoteObserver
      */
     public function created(DeliveryNote $deliveryNote)
     {
-        Mail::to('thomas.damsgaard@hotmail.com')->send(new DataSent($deliveryNote));
+        Mail::to('thomas.damsgaard@hotmail.com')->queue(new DataSent($deliveryNote));
     }
 
     /**
