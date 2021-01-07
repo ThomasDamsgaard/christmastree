@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/', [App\Http\Controllers\DeliveryNoteController::class, 'store'])->name('deliveryNote.store');
+Route::post('/dashboard', [App\Http\Controllers\DeliveryNoteController::class, 'store']
+)->middleware(['auth'])->name('deliveryNote.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

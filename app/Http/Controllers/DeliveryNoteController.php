@@ -42,7 +42,7 @@ class DeliveryNoteController extends Controller
 
         $data->save();
 
-        return redirect('/')->with('success', 'The order is sent');
+        return redirect('/dashboard')->with('success', 'The order is sent');
     }
 
 }
