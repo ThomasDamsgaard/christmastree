@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::post('/', [App\Http\Controllers\DeliveryNoteController::class, 'store'])->name('deliveryNote.store');
 
-Auth::routes();
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+require __DIR__.'/auth.php';
