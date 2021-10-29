@@ -1,4 +1,4 @@
-<div id="app" class="flex flex-col mt-5 px-10">
+<div id="table" class="flex flex-col mt-5 px-10">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-6 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -92,3 +92,35 @@
     </div>
   </div>
 </div>
+
+@push('scripts')
+  <script type="text/javascript">
+    var table = new Vue({
+      el: "#table",
+      data: {
+          inputs: [
+              {
+                  slot: '',
+                  pallet: '',
+                  type: '',
+                  label: '',
+                  size: '',
+                  amount: ''
+              }
+          ]
+      },
+      methods: {
+          add() {
+              this.inputs.push({ slot: '', pallet: '', type: '', label: '', size: '', amount: '' });
+          },
+          remove(index) {
+            if (confirm('Confirm you want to delete the row')) {
+              this.inputs.splice(index, 1);
+            }
+          }
+      }
+    });
+  </script>
+@endpush
+
+

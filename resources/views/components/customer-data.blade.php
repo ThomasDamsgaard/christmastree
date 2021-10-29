@@ -1,4 +1,4 @@
-<div class="md:grid md:grid-cols-2 md:gap-6 px-10">
+<div id="datepicker" class="md:grid md:grid-cols-2 md:gap-6 px-10">
   <div class="md:col-span-2">
       <div class="shadow sm:rounded-md sm:overflow-hidden">
         <div class="p-5 bg-white sm:p-6">
@@ -23,18 +23,18 @@
                 Destination
               </label>
               <input
-              id="destination"
-              class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-              type="text"
-              name="destination"
-              list="customer"
-              required>
+                id="destination"
+                class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                type="text"
+                name="destination"
+                list="customer"
+                v-model="customer"
+                required
+              >
               <datalist id="customer">
                   <option value="ETS Georges Digonnet">ETS Georges Digonnet</option>
-                  <option value="150-175">150-175</option>
-                  <option value="150-200">150-200</option>
               </datalist>
-              <div class="px-3">
+              <div class="px-3" v-if="customer === 'ETS Georges Digonnet'">
                 <p>Route de Montfaucon</p>
                 <p>Lieu-dit Charron</p>
                 <p>43190 Tence</p>
@@ -45,7 +45,17 @@
               <label for="date" class="block text-sm font-medium leading-5 text-gray-700">
                 Date
               </label>
-              <input id="date"
+              <vuejs-datepicker
+                v-model="date"
+                name="date"
+                input-class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                :monday-first="true"
+                format="dd MMMM yyyy"
+                calendar-class="rounded-md"
+              >
+
+              </vuejs-datepicker>
+              {{-- <input id="date"
               class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
               type="text"
               value="{{ Carbon\Carbon::now()->format('d-m-Y') }}"
@@ -53,20 +63,30 @@
               required>
               @error('date')
                 <p class="text-red-900">{{ $message }}</p>
-              @enderror
+              @enderror --}}
             </div>
 
             <div class="col-span-6 sm:col-span-2">
               <label for="departure" class="block text-sm font-medium leading-5 text-gray-700">
                 Departure Date
               </label>
-                <input id="departure"
+              <vuejs-datepicker
+                v-model="departure"
+                name="departure"
+                input-class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                :monday-first="true"
+                format="dd MMMM yyyy"
+                calendar-class="rounded-md"
+              >
+
+              </vuejs-datepicker>
+                {{-- <input id="departure"
                   class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   type="text"
                   placeholder="1234567"
                   name="departure"
                   required
-                >
+                > --}}
             </div>
 
             <div class="col-span-6 sm:col-span-2">
@@ -85,13 +105,23 @@
               <label for="arrival" class="block text-sm font-medium leading-5 text-gray-700">
                 Arrival Date
               </label>
-                <input id="arrival"
+              <vuejs-datepicker
+                v-model="arrival"
+                name="arrival"
+                input-class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                :monday-first="true"
+                format="dd MMMM yyyy"
+                calendar-class="rounded-md"
+              >
+
+              </vuejs-datepicker>
+                {{-- <input id="arrival"
                   class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   type="text"
                   placeholder="1234567"
                   name="arrival"
                   required
-                >
+                > --}}
             </div>
 
             <div class="col-span-6 sm:col-span-2">
@@ -102,7 +132,7 @@
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   #
                 </span>
-                <input id="trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="1234567" name="trailer">
+                <input id="trailer" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="TH4675" name="trailer">
               </div>
             </div>
 
@@ -122,8 +152,29 @@
 
           </div>
 
-          <img class="mt-5" src="/images/truck.png" alt="Truck">
+          {{-- <img class="mt-5" src="/images/truck.png" alt="Truck"> --}}
         </div>
       </div>
     </div>
   </div>
+
+  @push('scripts')
+    <script src="https://unpkg.com/vuejs-datepicker"></script>
+
+    <script type="text/javascript">
+      var datepicker = new Vue({
+        el: "#datepicker",
+        components: {
+          vuejsDatepicker
+        },
+        data () {
+          return {
+            customer: '',
+            date: new Date(),
+            departure: new Date(),
+            arrival: new Date()
+          };
+        }
+      });
+    </script>
+  @endpush
