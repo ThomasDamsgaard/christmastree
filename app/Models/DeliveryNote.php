@@ -34,8 +34,8 @@ class DeliveryNote extends Model
     /**
      * Formats the frontend date d-m-Y to database format Y-m-d.
      */
-    public function setDateAttribute($value)
-    {
-        $this->attributes['date'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
-    }
+    // public function setDateAttribute($value)
+    // {
+    //     $this->attributes['date'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+    // }
 }
