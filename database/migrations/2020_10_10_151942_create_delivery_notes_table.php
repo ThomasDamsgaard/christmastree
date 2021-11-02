@@ -15,13 +15,13 @@ class CreateDeliveryNotesTable extends Migration
     {
         Schema::create('delivery_notes', function (Blueprint $table) {
             $table->id();
-            $table->string('order');
-            $table->timestamp('date');
-            $table->timestamp('departure');
-            $table->timestamp('arrival');
-            $table->string('puller');
-            $table->string('trailer');
-            $table->string('second_trailer');
+            $table->string('order')->nullable();
+            $table->timestamp('date')->nullable();
+            $table->timestamp('departure')->nullable();
+            $table->timestamp('arrival')->nullable();
+            $table->string('puller')->nullable();
+            $table->string('trailer')->nullable();
+            $table->string('second_trailer')->nullable();
             // $table->string('supplier');
             // $table->string('reference');
             // $table->string('phone');
