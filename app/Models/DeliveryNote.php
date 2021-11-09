@@ -23,12 +23,12 @@ class DeliveryNote extends Model
      * @var array
      */
     protected $casts = [
-        'slot' => 'array',
-        'pallet' => 'array',
-        'type' => 'array',
-        'size' => 'array',
-        'amont' => 'array',
-        'label' => 'array',
+        'line_items' => 'array',
+        // 'pallet' => 'array',
+        // 'type' => 'array',
+        // 'size' => 'array',
+        // 'amont' => 'array',
+        // 'label' => 'array',
     ];
 
     /**

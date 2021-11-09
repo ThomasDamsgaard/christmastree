@@ -22,8 +22,26 @@ class DeliveryNoteController extends Controller
      */
     public function store(Request $request)
     {
-
         // dd($request);
+
+            $slot = [$request->slot];
+                $pallet = [$request->pallet];
+                $type = [$request->type];
+                $label = [$request->label];
+                $size = [$request->size];
+                $amount = [$request->amount];
+
+    // for ($i=0; $i < count($slot); $i++) {
+    //     $line_items = [
+    //         'slot' => $slot[$i],
+    //         'pallet' => $pallet[$i],
+    //         'type' => $type[$i],
+    //     ];
+    // }
+        // dd($request);
+        dd($line_items);
+
+
 
         $deliveryNote = DeliveryNote::create([
             'order' => 1,
@@ -32,10 +50,66 @@ class DeliveryNoteController extends Controller
             'arrival' => \Carbon\Carbon::parse($request->arrival),
             'puller' => $request->puller,
             'trailer' => $request->trailer,
-            'second_trailer' => $request->second_trailer
+            'second_trailer' => $request->second_trailer,
+            'line_items' => [
+            // [
+            //     'slot' => $request->slot,
+            //     'pallet' => $request->pallet,
+            //     'type' => $request->type,
+            //     'label' => $request->label,
+            //     'size' => $request->size,
+            //     'amount' => $request->amount
+            // ],
+            [
+                'slot' => 2,
+                'pallet' => 'cghjh',
+                'type' => 'NGR',
+                'label' => 'purple',
+                'size' => '125-150',
+                'amount' => '30'
+            ],
+            [
+                'slot' => 2,
+                'pallet' => 'yghiuj',
+                'type' => 'NGR',
+                'label' => 'orange',
+                'size' => '150-175',
+                'amount' => '30'
+            ],
+            [
+                'slot' => 3,
+                'pallet' => 'cghjh',
+                'type' => 'NGR',
+                'label' => 'purple',
+                'size' => '125-150',
+                'amount' => '30'
+            ],
+            [
+                'slot' => 3,
+                'pallet' => 'cghjh',
+                'type' => 'NOB',
+                'label' => 'purple',
+                'size' => '125-150',
+                'amount' => '30'
+            ]
+            ],
         ]);
 
-        $pdf = PDF::loadView('exports.pdf', $deliveryNote);
+
+
+$data = collect($deliveryNote->line_items)
+->groupBy(['type', 'size'])
+->map(function ($tree) {
+        return collect($tree)->map(function ($shipments) {
+            return [
+                'amount' => $shipments->sum('amount')
+            ];
+        });
+    });
+
+// return $data;
+
+        $pdf = PDF::loadView('exports.pdf', ['deliveryNote' => $deliveryNote, 'data' => $data]);
 
         return $pdf->stream();
 

@@ -15,7 +15,7 @@ class CreateDeliveryNotesTable extends Migration
     {
         Schema::create('delivery_notes', function (Blueprint $table) {
             $table->id();
-            $table->string('order')->nullable();
+            $table->integer('order')->nullable();
             $table->timestamp('date')->nullable();
             $table->timestamp('departure')->nullable();
             $table->timestamp('arrival')->nullable();
@@ -26,7 +26,7 @@ class CreateDeliveryNotesTable extends Migration
             // $table->string('reference');
             // $table->string('phone');
             // $table->string('location');
-            // $table->json('slot');
+            $table->json('line_items')->nullable();
             // $table->json('pallet');
             // $table->json('type');
             // $table->json('size');

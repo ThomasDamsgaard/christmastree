@@ -38,25 +38,6 @@
             vertical-align: top;
             border: 1px solid #ddd;
         }
-        .flex {
-            display: flex;
-        }
-
-        .flex-col {
-            flex-direction: column;
-        }
-
-        .flex-row {
-            flex-direction: row;
-        }
-
-        .justify-center {
-            justify-items: center;
-        }
-
-        .justify-between {
-            justify-items: space-between;
-        }
 
         .p-5 {
             padding: 3rem !important;
@@ -152,26 +133,23 @@
     <tr>
         <td>
             <div>
-                <p>Date: {{ $date->format('d F Y') }}</p>
-                <p class="mt-1">Puller: {{ $puller }}</p>
-                <p class="mt-1">Trailer: {{ $trailer }}</p>
-                @if ($second_trailer)
-                    <p class="mt-1">Second Trailer: {{ $second_trailer }}</p>
+                <p>Date: {{ $deliveryNote->date->format('d F Y') }}</p>
+                <p class="mt-1">Puller: {{ $deliveryNote->puller }}</p>
+                <p class="mt-1">Trailer: {{ $deliveryNote->trailer }}</p>
+                @if ($deliveryNote->second_trailer)
+                    <p class="mt-1">Second Trailer: {{ $deliveryNote->second_trailer }}</p>
                 @endif
             </div>
         </td>
         <td>
-            <p> Departure Date: {{ $departure->format('d F Y') }}</p>
-            <p class="mt-1"> Estimated Arrival Date: {{ $arrival->format('d F Y') }}</p>
+            <p> Departure Date: {{ $deliveryNote->departure->format('d F Y') }}</p>
+            <p class="mt-1"> Estimated Arrival Date: {{ $deliveryNote->arrival->format('d F Y') }}</p>
         </td>
     </tr>
 
   </table>
 
-  <table width="550" style="margin-left: auto; margin-right: auto;">
-      <tr>
-          <td>
-              <table class="table" width="100%" style="float: left; padding-left: 3rem; border-collapse: collapse;">
+  <table class="table" width="550" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
                 <thead>
                   <tr class="row">
                     <th>#</th>
@@ -183,22 +161,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @for ($i = 0; $i < 15; $i++)
+
+                    @foreach ($deliveryNote->line_items as $item)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td width="30%"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $item['slot'] }}</td>
+                            <td>{{ $item['pallet'] }}</td>
+                            <td>{{ $item['type'] }}</td>
+                            <td>{{ $item['label'] }}</td>
+                            <td>{{ $item['size'] }}</td>
+                            <td>{{ $item['amount'] }}</td>
                           </tr>
-                    @endfor
+
+                    @endforeach
 
                 </tbody>
               </table>
-          </td>
-          <td>
-              <table class="table" width="100%" style="float: left; padding-right: 3rem; border-collapse: collapse;">
+  <table class="table" width="550" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
                 <thead>
                   <tr class="row">
                     <th>Species</th>
@@ -207,19 +185,27 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @for ($i = 0; $i < 15; $i++)
-                        <tr>
-                            <td width="45%"></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                    @endfor
+                    @foreach ($data as $type => $children)
+                             @foreach ($children as $size => $child)
+                    <tr>
+                        <td>
+                            {{ $type }}
+                        </td>
+                        <td>
+                            {{ $size }}
+
+                        </td>
+                        <td>
+                            {{ $child['amount'] }}
+
+                        </td>
+                    </tr>
+                        @endforeach
+
+                    @endforeach
 
                 </tbody>
               </table>
-          </td>
-      </tr>
-  </table>
 
 
 

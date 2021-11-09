@@ -77,14 +77,8 @@
                   Add Line
                 </p>
               </td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
             </tr>
-
+            <input type="hidden" name="line_items" v-model="inputs">
             <!-- More rows... -->
           </tbody>
         </table>
