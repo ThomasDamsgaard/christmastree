@@ -23,23 +23,35 @@ class DeliveryNoteController extends Controller
     public function store(Request $request)
     {
         // dd($request);
+        $line_items = [];
+        foreach ($request->slot as $key => $value) {
+            $line_items[] = [
+                'slot' => $value,
+                'type' => $request->type[$key],
+                'label' => $request->label[$key],
+                'pallet' => $request->pallet[$key],
+                'size' => $request->size[$key],
+                'amount' => $request->amount[$key]
+            ];
+        }
 
-            $slot = [$request->slot];
-                $pallet = [$request->pallet];
-                $type = [$request->type];
-                $label = [$request->label];
-                $size = [$request->size];
-                $amount = [$request->amount];
+        // dd($line_items);
 
-    // for ($i=0; $i < count($slot); $i++) {
-    //     $line_items = [
-    //         'slot' => $slot[$i],
-    //         'pallet' => $pallet[$i],
-    //         'type' => $type[$i],
-    //     ];
-    // }
-        // dd($request);
-        dd($line_items);
+    //         $slot = collect([$request->slot])->each(function ($item)
+    //         {
+    //             return ['slot' => $item];
+    //         });
+
+    //         dd($slot);
+    //             $pallet = [$request->pallet];
+    //             $type = [$request->type];
+    //             $label = [$request->label];
+    //             $size = [$request->size];
+    //             $amount = [$request->amount];
+
+    // $line_items = collect(['slot' =>$request->slot])->zip($request->pallet, $request->type, $request->label, $request->size, $request->amount);
+    //     // dd($request->line_items);
+    //     dd($line_items);
 
 
 
@@ -51,7 +63,8 @@ class DeliveryNoteController extends Controller
             'puller' => $request->puller,
             'trailer' => $request->trailer,
             'second_trailer' => $request->second_trailer,
-            'line_items' => [
+            'line_items' => $line_items
+            // [
             // [
             //     'slot' => $request->slot,
             //     'pallet' => $request->pallet,
@@ -60,39 +73,39 @@ class DeliveryNoteController extends Controller
             //     'size' => $request->size,
             //     'amount' => $request->amount
             // ],
-            [
-                'slot' => 2,
-                'pallet' => 'cghjh',
-                'type' => 'NGR',
-                'label' => 'purple',
-                'size' => '125-150',
-                'amount' => '30'
-            ],
-            [
-                'slot' => 2,
-                'pallet' => 'yghiuj',
-                'type' => 'NGR',
-                'label' => 'orange',
-                'size' => '150-175',
-                'amount' => '30'
-            ],
-            [
-                'slot' => 3,
-                'pallet' => 'cghjh',
-                'type' => 'NGR',
-                'label' => 'purple',
-                'size' => '125-150',
-                'amount' => '30'
-            ],
-            [
-                'slot' => 3,
-                'pallet' => 'cghjh',
-                'type' => 'NOB',
-                'label' => 'purple',
-                'size' => '125-150',
-                'amount' => '30'
-            ]
-            ],
+            // [
+            //     'slot' => 2,
+            //     'pallet' => 'cghjh',
+            //     'type' => 'NGR',
+            //     'label' => 'purple',
+            //     'size' => '125-150',
+            //     'amount' => '30'
+            // ],
+            // [
+            //     'slot' => 2,
+            //     'pallet' => 'yghiuj',
+            //     'type' => 'NGR',
+            //     'label' => 'orange',
+            //     'size' => '150-175',
+            //     'amount' => '30'
+            // ],
+            // [
+            //     'slot' => 3,
+            //     'pallet' => 'cghjh',
+            //     'type' => 'NGR',
+            //     'label' => 'purple',
+            //     'size' => '125-150',
+            //     'amount' => '30'
+            // ],
+            // [
+            //     'slot' => 3,
+            //     'pallet' => 'cghjh',
+            //     'type' => 'NOB',
+            //     'label' => 'purple',
+            //     'size' => '125-150',
+            //     'amount' => '30'
+            // ]
+            // ],
         ]);
 
 
@@ -112,24 +125,6 @@ $data = collect($deliveryNote->line_items)
         $pdf = PDF::loadView('exports.pdf', ['deliveryNote' => $deliveryNote, 'data' => $data]);
 
         return $pdf->stream();
-
-        // $data->date = $request->date;
-        // $data->order = $request->order;
-        // $data->puller = $request->puller;
-        // $data->trailer = $request->trailer;
-        // $data->second_trailer = $request->second_trailer;
-        // $data->supplier = $request->supplier;
-        // $data->reference = $request->reference;
-        // $data->phone = $request->phone;
-        // $data->location = $request->location;
-        // $data->slot = json_encode($request->slot);
-        // $data->pallet = json_encode($request->pallet);
-        // $data->type = json_encode($request->type);
-        // $data->size = json_encode($request->size);
-        // $data->amount = json_encode($request->amount);
-        // $data->label = json_encode($request->label);
-
-        // $data->save();
 
         return redirect('/dashboard')->with('success', 'The order is sent');
     }

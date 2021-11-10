@@ -101,7 +101,7 @@
                   size: '',
                   amount: ''
               }
-          ]
+          ],
       },
       methods: {
           add() {

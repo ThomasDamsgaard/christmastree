@@ -1,5 +1,5 @@
 <x-app-layout>
-  <form class="mt-5" method="POST" action="{{ route('deliveryNote.store') }}">
+  <form class="mt-5" method="POST" action="{{ route('deliveryNote.store') }}" @submit="submit">
     @csrf
 
         <div>
