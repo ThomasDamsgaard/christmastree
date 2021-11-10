@@ -22,7 +22,6 @@ class DeliveryNoteController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $line_items = [];
         foreach ($request->slot as $key => $value) {
             $line_items[] = [
@@ -35,26 +34,6 @@ class DeliveryNoteController extends Controller
             ];
         }
 
-        // dd($line_items);
-
-    //         $slot = collect([$request->slot])->each(function ($item)
-    //         {
-    //             return ['slot' => $item];
-    //         });
-
-    //         dd($slot);
-    //             $pallet = [$request->pallet];
-    //             $type = [$request->type];
-    //             $label = [$request->label];
-    //             $size = [$request->size];
-    //             $amount = [$request->amount];
-
-    // $line_items = collect(['slot' =>$request->slot])->zip($request->pallet, $request->type, $request->label, $request->size, $request->amount);
-    //     // dd($request->line_items);
-    //     dd($line_items);
-
-
-
         $deliveryNote = DeliveryNote::create([
             'order' => 1,
             'date' => \Carbon\Carbon::parse($request->date),
@@ -64,48 +43,6 @@ class DeliveryNoteController extends Controller
             'trailer' => $request->trailer,
             'second_trailer' => $request->second_trailer,
             'line_items' => $line_items
-            // [
-            // [
-            //     'slot' => $request->slot,
-            //     'pallet' => $request->pallet,
-            //     'type' => $request->type,
-            //     'label' => $request->label,
-            //     'size' => $request->size,
-            //     'amount' => $request->amount
-            // ],
-            // [
-            //     'slot' => 2,
-            //     'pallet' => 'cghjh',
-            //     'type' => 'NGR',
-            //     'label' => 'purple',
-            //     'size' => '125-150',
-            //     'amount' => '30'
-            // ],
-            // [
-            //     'slot' => 2,
-            //     'pallet' => 'yghiuj',
-            //     'type' => 'NGR',
-            //     'label' => 'orange',
-            //     'size' => '150-175',
-            //     'amount' => '30'
-            // ],
-            // [
-            //     'slot' => 3,
-            //     'pallet' => 'cghjh',
-            //     'type' => 'NGR',
-            //     'label' => 'purple',
-            //     'size' => '125-150',
-            //     'amount' => '30'
-            // ],
-            // [
-            //     'slot' => 3,
-            //     'pallet' => 'cghjh',
-            //     'type' => 'NOB',
-            //     'label' => 'purple',
-            //     'size' => '125-150',
-            //     'amount' => '30'
-            // ]
-            // ],
         ]);
 
 

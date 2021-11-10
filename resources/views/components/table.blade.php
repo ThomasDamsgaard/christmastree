@@ -21,7 +21,7 @@
                 Size
               </th>
               <th scope="col" class="w-1/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Number
+                Amount
               </th>
               <th scope="col" class="relative w-1/6 px-6 py-3">
                 <span class="sr-only">Edit</span>
@@ -64,7 +64,7 @@
                 </datalist>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <input v-model="input.amount" class="block w-full focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="text" placeholder="xxx" name="amount[]" required>
+                <input v-model="input.amount" class="block w-full focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" type="number" placeholder="xxx" name="amount[]" required>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <a @click="remove(index)" class="text-red-600 hover:text-red-900">Delete</a>
@@ -72,14 +72,12 @@
             </tr>
 
             <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <td class="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium">
                 <p @click="add" class="text-indigo-600 hover:text-indigo-900">
                   Add Line
                 </p>
               </td>
             </tr>
-            <input type="hidden" name="line_items" v-model="inputs">
-            <!-- More rows... -->
           </tbody>
         </table>
       </div>

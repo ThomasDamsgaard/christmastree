@@ -1,11 +1,10 @@
 <x-app-layout>
-  <form class="mt-5" method="POST" action="{{ route('deliveryNote.store') }}" @submit="submit">
+  <form class="mt-5" method="POST" action="{{ route('deliveryNote.store') }}">
     @csrf
 
         <div>
           @include('components.section-text', [
             'header' => 'Customer Data',
-            'text' => 'This information will tell employee what the section is about.'
             ])
 
           @include('components.customer-data')
@@ -14,7 +13,6 @@
 
          @include('components.section-text', [
           'header' => 'Line Specifications',
-          'text' => 'This information will tell employee what the section is about.'
           ])
 
           @include('components.table')

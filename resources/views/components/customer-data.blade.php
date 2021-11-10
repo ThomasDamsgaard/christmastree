@@ -1,4 +1,4 @@
-<div id="datepicker" class="md:grid md:grid-cols-2 md:gap-6 px-10">
+<div id="datepicker" class="md:grid md:grid-cols-2 md:gap-6 px-10 mt-5">
   <div class="md:col-span-2">
       <div class="shadow sm:rounded-md sm:overflow-hidden">
         <div class="p-5 bg-white sm:p-6">
