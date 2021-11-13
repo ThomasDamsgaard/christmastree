@@ -2,7 +2,6 @@
 
 namespace App\Mail;
 
-use App\Exports\CsvsExport;
 use App\Exports\TreesExport;
 use App\Models\DeliveryNote;
 use Illuminate\Bus\Queueable;
@@ -47,8 +46,8 @@ class DataSent extends Mailable
         ->text('mail')
         ->attachData($this->pdf->output(), $this->deliveryNote->reference . '.pdf')
         ->attach(Excel::download(
-                new TreesExport(), 'report.xlsx'
-            )->getFile(), ['as' => 'report.xlsx']
+                new TreesExport(), $this->deliveryNote->reference . '.xlsx'
+            )->getFile(), ['as' => $this->deliveryNote->reference . '.xlsx']
         );
         // ->attach(Excel::download(
         //         new CsvsExport(), 'report.csv'

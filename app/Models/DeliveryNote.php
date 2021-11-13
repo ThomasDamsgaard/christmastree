@@ -24,18 +24,10 @@ class DeliveryNote extends Model
      */
     protected $casts = [
         'line_items' => 'array',
-        // 'pallet' => 'array',
-        // 'type' => 'array',
-        // 'size' => 'array',
-        // 'amont' => 'array',
-        // 'label' => 'array',
     ];
 
     /**
-     * Formats the frontend date d-m-Y to database format Y-m-d.
+     * The attributes that should be hidden for arrays.
      */
-    // public function setDateAttribute($value)
-    // {
-    //     $this->attributes['date'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
-    // }
+     protected $hidden = ['id', 'created_at', 'updated_at'];
 }
