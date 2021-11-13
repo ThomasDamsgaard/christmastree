@@ -3,18 +3,16 @@
 namespace App\Exports;
 
 use App\Models\DeliveryNote;
-use Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\Exportable;
 
-class TreesExport implements FromView
+class TreesExport implements FromQuery
 {
-    /**
-    *
-    */
-    public function view(): View
+    use Exportable;
+
+    public function query()
     {
-        return view('exports.table', [
-            'delivery_note' => DeliveryNote::latest('created_at')->first()
-        ]);
+        return DeliveryNote::query()
+        ->latest('created_at')->first();
     }
 }

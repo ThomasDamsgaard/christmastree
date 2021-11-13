@@ -60,8 +60,8 @@ class DeliveryNoteController extends Controller
             });
         });
 
-        $pdf = PDF::loadView('exports.pdf', ['deliveryNote' => $deliveryNote, 'data' => $data])
-        ->save('pdf/' . $deliveryNote->reference . '.pdf');
+        $pdf = PDF::loadView('exports.pdf', ['deliveryNote' => $deliveryNote, 'data' => $data]);
+        // ->save('pdf/' . $deliveryNote->reference . '.pdf');
 
         Mail::to('eriklacour@gmail.com')
         ->send(new DataSent($deliveryNote, $pdf));

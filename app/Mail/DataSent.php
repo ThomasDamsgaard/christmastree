@@ -45,12 +45,11 @@ class DataSent extends Mailable
         return $this
         ->from('thdam09@gmail.com')
         ->text('mail')
-        ->attachData($this->pdf->output(), $this->deliveryNote->reference . '.pdf');
-
-        // ->attach(Excel::download(
-        //         new TreesExport(), 'report.xlsx'
-        //     )->getFile(), ['as' => 'report.xlsx']
-        // );
+        ->attachData($this->pdf->output(), $this->deliveryNote->reference . '.pdf')
+        ->attach(Excel::download(
+                new TreesExport(), 'report.xlsx'
+            )->getFile(), ['as' => 'report.xlsx']
+        );
         // ->attach(Excel::download(
         //         new CsvsExport(), 'report.csv'
         //     )->getFile(), ['as' => 'report.csv']
