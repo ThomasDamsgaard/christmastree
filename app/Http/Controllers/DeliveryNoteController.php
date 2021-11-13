@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreDeliveryNoteRequest;
 
+
 class DeliveryNoteController extends Controller
 {
     /**
@@ -61,6 +62,10 @@ class DeliveryNoteController extends Controller
 
         $pdf = PDF::loadView('exports.pdf', ['deliveryNote' => $deliveryNote, 'data' => $data])
         ->save('pdf/' . $deliveryNote->reference . '.pdf');
+
+        Mail::to('eriklacour@gmail.com')
+        ->send(new DataSent($deliveryNote, $pdf));
+
 
         // return $pdf->stream();
 

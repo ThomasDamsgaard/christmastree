@@ -4,11 +4,12 @@ namespace App\Mail;
 
 use App\Exports\CsvsExport;
 use App\Exports\TreesExport;
+use App\Models\DeliveryNote;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Queue\SerializesModels;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class DataSent extends Mailable
 {
@@ -19,16 +20,18 @@ class DataSent extends Mailable
      *
      * @var TreesExport
      */
-    public $data;
+    public $deliveryNote;
+    public $pdf;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct(DeliveryNote $deliveryNote, $pdf)
     {
-        $this->data = $data;
+        $this->deliveryNote = $deliveryNote;
+        $this->pdf = $pdf;
     }
 
     /**
@@ -38,13 +41,16 @@ class DataSent extends Mailable
      */
     public function build()
     {
+        // dd($this->deliveryNote);
         return $this
         ->from('thdam09@gmail.com')
         ->text('mail')
-        ->attach(Excel::download(
-                new TreesExport(), 'report.xlsx'
-            )->getFile(), ['as' => 'report.xlsx']
-        );
+        ->attachData($this->pdf->output(), $this->deliveryNote->reference . '.pdf');
+
+        // ->attach(Excel::download(
+        //         new TreesExport(), 'report.xlsx'
+        //     )->getFile(), ['as' => 'report.xlsx']
+        // );
         // ->attach(Excel::download(
         //         new CsvsExport(), 'report.csv'
         //     )->getFile(), ['as' => 'report.csv']
