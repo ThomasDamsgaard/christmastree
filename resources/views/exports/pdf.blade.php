@@ -150,7 +150,6 @@
         <img src="{{ public_path('images/truck.png') }}" alt="" width="75%">
     </div>
 
-
     <table class="table mt-5" width="80%" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
         <thead>
             <tr class="row">
