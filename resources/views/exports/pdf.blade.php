@@ -60,6 +60,10 @@
             margin-top: 0.25rem !important;
         }
 
+        .mt-3 {
+            margin-top: 1.5rem !important;
+        }
+
         .text-xl {
             font-size: 1.25rem;
         }
@@ -119,17 +123,14 @@
             <td>
                 <div>
                     <p class="font-medium text-lg">Destination:</p>
-                    <p>ETS Georges Digonnet</p>
-                    <p>Route de Montfaucon</p>
-                    <p>Lieu-dit Charron</p>
-                    <p>43190 Tence</p>
+                    <p>{{ $deliveryNote->destination }}</p>
                 </div>
             </td>
         </tr>
 
         <tr>
             <td>
-                <div class="mt-5">
+                <div class="mt-3">
                     <p>Date: {{ $deliveryNote->date->format('d F Y') }}</p>
                     <p class="mt-1">Puller: {{ $deliveryNote->puller }}</p>
                     <p class="mt-1">Trailer: {{ $deliveryNote->trailer }}</p>
@@ -144,6 +145,11 @@
             </td>
         </tr>
     </table>
+
+    <div class="mt-5" style="text-align: center; vertical-align: middle;">
+        <img src="{{ public_path('images/truck.png') }}" alt="" width="75%">
+    </div>
+
 
     <table class="table mt-5" width="80%" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
         <thead>
@@ -169,6 +175,7 @@
             @endforeach
         </tbody>
     </table>
+
     <table class="table mt-5" width="80%" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
         <thead>
             <tr class="row">
