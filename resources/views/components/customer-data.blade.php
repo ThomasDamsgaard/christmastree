@@ -39,6 +39,16 @@
                 <p>Lieu-dit Charron</p>
                 <p>43190 Tence</p>
               </div>
+              <label for="reference" class="block text-sm font-medium leading-5 text-gray-700 mt-6">
+                Reference Number
+              </label>
+              <input
+                id="reference"
+                class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                type="text"
+                name="reference"
+                required
+              >
             </div>
 
             <div class="col-span-6 sm:col-span-2">

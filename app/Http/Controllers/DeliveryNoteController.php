@@ -36,6 +36,8 @@ class DeliveryNoteController extends Controller
 
         $deliveryNote = DeliveryNote::create([
             'order' => 1,
+            'destination' => $request->destination,
+            'reference' => $request->reference,
             'date' => \Carbon\Carbon::parse($request->date),
             'departure' => \Carbon\Carbon::parse($request->departure),
             'arrival' => \Carbon\Carbon::parse($request->arrival),
@@ -47,21 +49,20 @@ class DeliveryNoteController extends Controller
 
 
 
-$data = collect($deliveryNote->line_items)
-->groupBy(['type', 'size'])
-->map(function ($tree) {
-        return collect($tree)->map(function ($shipments) {
-            return [
-                'amount' => $shipments->sum('amount')
-            ];
+        $data = collect($deliveryNote->line_items)
+        ->groupBy(['type', 'size'])
+        ->map(function ($tree) {
+            return collect($tree)->map(function ($shipments) {
+                return [
+                    'amount' => $shipments->sum('amount')
+                ];
+            });
         });
-    });
 
-// return $data;
+        $pdf = PDF::loadView('exports.pdf', ['deliveryNote' => $deliveryNote, 'data' => $data])
+        ->save('pdf/' . $deliveryNote->reference . '.pdf');
 
-        $pdf = PDF::loadView('exports.pdf', ['deliveryNote' => $deliveryNote, 'data' => $data]);
-
-        return $pdf->stream();
+        // return $pdf->stream();
 
         return redirect('/dashboard')->with('success', 'The order is sent');
     }
