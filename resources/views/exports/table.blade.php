@@ -2,34 +2,41 @@
     <table>
       <tbody>
         <tr>
-          <td>Order #</td>
-          <td>{{ $delivery_note->order }}</td>
+          <th>Order #</th>
+          <th>Puller Reg #</th>
+          <th>Trailer Reg #</th>
+          <th>Second Trailer Reg #</th>
+          <th>Reference</th>
+        </tr>
+        <tr>
+          <td>{{ $deliveryNote->order }}</td>
+          <td>{{ $deliveryNote->puller }}</td>
+          <td>{{ $deliveryNote->trailer }}</td>
+          <td>{{ $deliveryNote->second_trailer }}</td>
+          <td>{{ $deliveryNote->reference }}</td>
         </tr>
 
-        <tr>
-          <td>Puller Reg #</td>
-          <td>{{ $delivery_note->puller }}</td>
-        </tr>
+        <tr></tr>
+        <tr></tr>
 
         <tr>
-          <td>Trailer Reg #</td>
-          <td>{{ $delivery_note->trailer }}</td>
+          <td>Slot</td>
+          <td>Pallet</td>
+          <td>Type</td>
+          <td>Label</td>
+          <td>Size</td>
+          <td>Amount</td>
         </tr>
 
-        <tr>
-          <td>Second Trailer Reg #</td>
-          <td>{{ $delivery_note->second_trailer }}</td>
-        </tr>
-
-        <tr>
-          <td>Reference</td>
-          <td>{{ $delivery_note->reference }}</td>
-        </tr>
-        <tr>
-          <td>Pallet #</td>
-          @foreach (json_decode($delivery_note->line_items as $item))
-            <td>{{ $item }}</td>
-          @endforeach
-        </tr>
+        @foreach ($deliveryNote->line_items as $key => $value)
+          <tr>
+            <td>{{ $value['slot']}}</td>
+            <td>{{ $value['pallet']}}</td>
+            <td>{{ $value['type']}}</td>
+            <td>{{ $value['label']}}</td>
+            <td>{{ $value['size']}}</td>
+            <td>{{ $value['amount']}}</td>
+          </tr>
+        @endforeach
       </tbody>
 </table>
