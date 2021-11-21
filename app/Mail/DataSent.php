@@ -46,7 +46,7 @@ class DataSent extends Mailable
         ->text('mail')
         ->attachData($this->pdf->output(), $this->deliveryNote->reference . '.pdf')
         ->attach(Excel::download(
-                new TreesExport(), $this->deliveryNote->reference . '.xlsx'
+                new TreesExport($this->deliveryNote), $this->deliveryNote->reference . '.xlsx'
             )->getFile(), ['as' => $this->deliveryNote->reference . '.xlsx']
         );
         // ->attach(Excel::download(
