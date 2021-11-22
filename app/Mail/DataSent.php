@@ -21,16 +21,18 @@ class DataSent extends Mailable
      */
     public $deliveryNote;
     public $pdf;
+    public $data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(DeliveryNote $deliveryNote, $pdf)
+    public function __construct(DeliveryNote $deliveryNote, $pdf, $data)
     {
         $this->deliveryNote = $deliveryNote;
         $this->pdf = $pdf;
+        $this->data = $data;
     }
 
     /**
@@ -40,13 +42,12 @@ class DataSent extends Mailable
      */
     public function build()
     {
-        // dd($this->deliveryNote);
         return $this
         ->from('thdam09@gmail.com')
         ->text('mail')
         ->attachData($this->pdf->output(), $this->deliveryNote->reference . '.pdf')
         ->attach(Excel::download(
-                new TreesExport($this->deliveryNote), $this->deliveryNote->reference . '.xlsx'
+                new TreesExport($this->deliveryNote, $this->data), $this->deliveryNote->reference . '.xlsx'
             )->getFile(), ['as' => $this->deliveryNote->reference . '.xlsx']
         );
         // ->attach(Excel::download(

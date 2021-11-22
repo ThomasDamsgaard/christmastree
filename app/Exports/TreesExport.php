@@ -17,10 +17,19 @@ class TreesExport implements FromView
 {
     use Exportable, RegistersEventListeners;
 
+    public $data;
+
+    public function __construct(DeliveryNote $deliveryNote, $data)
+    {
+        $this->deliveryNote = $deliveryNote;
+        $this->data = $data;
+    }
+
     public function view(): View
     {
         return view('exports.table', [
-            'deliveryNote' => DeliveryNote::latest('created_at')->first()
+            'deliveryNote' => $this->deliveryNote,
+            'data' => $this->data
         ]);
     }
 

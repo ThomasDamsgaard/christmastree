@@ -64,7 +64,7 @@ class DeliveryNoteController extends Controller
         // ->save('pdf/' . $deliveryNote->reference . '.pdf');
 
         Mail::to('eriklacour@gmail.com')
-        ->send(new DataSent($deliveryNote, $pdf));
+        ->send(new DataSent($deliveryNote, $pdf, $data));
 
 
         // return $pdf->stream();

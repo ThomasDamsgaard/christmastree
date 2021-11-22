@@ -38,5 +38,24 @@
             <td>{{ $value['amount']}}</td>
           </tr>
         @endforeach
+
+        <tr></tr>
+        <tr></tr>
+
+        <tr>
+          <td>Species</td>
+          <td>Size</td>
+          <td>Total</td>
+        </tr>
+         @foreach ($data as $type => $children)
+                @foreach ($children as $size => $child)
+                    <tr>
+                        <td>{{ $type }}</td>
+                        <td>{{ $size }}</td>
+                        <td>{{ $child['amount'] }}</td>
+                    </tr>
+                @endforeach
+            @endforeach
+
       </tbody>
 </table>
