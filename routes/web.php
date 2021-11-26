@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\DeliveryNote;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,9 @@ Route::post('/dashboard', [App\Http\Controllers\DeliveryNoteController::class, '
 )->middleware(['auth'])->name('deliveryNote.store');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $deliveryNote = DeliveryNote::latest()->first();
+
+    return view('dashboard', compact('deliveryNote'));
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

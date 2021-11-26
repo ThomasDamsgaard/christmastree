@@ -17,7 +17,7 @@
             <div class="col-span-6 sm:col-span-2">
               <div class="flex justify-between">
                 <h4 class="font-semibold text-xl">Delivery Note</h4>
-                <p class="font-semibold text-xl">1</p>
+                <p class="font-semibold text-xl">{{ $deliveryNote->id }}</p>
               </div>
               <label for="destination" class="block text-sm font-medium leading-5 text-gray-700 mt-6">
                 Destination

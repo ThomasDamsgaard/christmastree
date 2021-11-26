@@ -30,4 +30,12 @@ class DeliveryNote extends Model
      * The attributes that should be hidden for arrays.
      */
      protected $hidden = ['id', 'created_at', 'updated_at'];
+
+     /**
+     * Get the next increment value from the model to be displayed at the dashboard
+     */
+     public static function next()
+     {
+         return static::max('id') + 1;
+     }
 }
